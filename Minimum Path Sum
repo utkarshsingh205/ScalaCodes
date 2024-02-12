@@ -1,0 +1,20 @@
+object Solution {
+    def minPathSum(grid: Array[Array[Int]]): Int = {
+       var (m,n) = (grid.length, grid(0).length);
+        var dp = grid;
+        for(row <- 0 until m) {
+            for(col <- 0 until n) {
+                if(row == 0 && col == 0)
+                    dp(row)(col) += 0
+                else if(row==0)
+                    dp(row)(col) = dp(row)(col) + dp(row)(col-1)
+                else if(col==0)
+                    dp(row)(col) = dp(row)(col) + dp(row-1)(col)
+                else
+                    dp(row)(col) = dp(row)(col) + math.min(dp(row-1)(col),dp(row)(col-1))
+            }
+        }
+        dp(m-1)(n-1)
+ 
+    }
+}

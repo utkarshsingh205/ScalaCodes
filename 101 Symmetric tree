@@ -1,0 +1,28 @@
+object Solution {
+    
+    def check(root1: TreeNode, root2: TreeNode): Boolean = {
+         if(root1!=null && root2!=null){
+            var a = check(root1.left,root2.right);
+            var b = check(root1.right,root2.left);
+            
+            if((root1.value == root2.value ) && a && b)
+                return true;
+            else
+                return false;
+        }
+        else if(root1 == null && root2 == null){
+            return true;
+        }
+        else
+            return false;
+    
+    }
+    
+    def isSymmetric(root: TreeNode): Boolean = {
+      
+        if(root == null)
+            return true;
+        
+        return check(root.left,root.right);
+    }
+}

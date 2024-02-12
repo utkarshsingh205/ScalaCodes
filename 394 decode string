@@ -1,0 +1,50 @@
+object Solution {
+    def decodeString(s: String): String = {
+        val numtrack = scala.collection.mutable.Stack[Int]()
+        val strtrack = scala.collection.mutable.Stack[String]()
+        
+        for(curr <- 0 until s.size){
+            
+            var digit = s(curr).toInt - 48
+            
+            if(digit>=0 && digit<=9){
+    
+                
+                
+                
+                numtrack.push(digit)
+            }
+            else if(s(curr) == ']'){
+                var currstr:String = ""
+                var currnum = numtrack.top
+                numtrack.pop()
+                // println(strtrack.top)
+                while(strtrack.top != "["){
+                   currstr = strtrack.top + currstr 
+                   strtrack.pop() 
+                }
+                strtrack.pop()
+                var finarr: String = ""
+                while(currnum > 0){
+                    finarr += currstr
+                    currnum -= 1
+                }
+                
+                strtrack.push(finarr)
+        
+            }
+            else{
+                strtrack.push(s(curr).toString)
+            
+            }
+                
+        }
+        
+        var result : String = ""
+        while(!strtrack.isEmpty){
+            result = strtrack.top + result
+            strtrack.pop()
+        }
+        result
+    }
+}

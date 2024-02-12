@@ -1,0 +1,14 @@
+object Solution {
+    def maxProfit(prices: Array[Int]): Int = {
+        var counter: Int = prices.size-1;
+        var rightmax = 0
+        var ans = -1
+        
+        for(i<- counter to 0 by -1){
+            rightmax = Math.max(rightmax , prices(i))
+            ans = Math.max(ans , rightmax-prices(i))
+        }
+        
+        return ans
+    }
+}

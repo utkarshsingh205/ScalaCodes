@@ -1,0 +1,21 @@
+import scala.collection.mutable.ArrayBuffer
+
+object Solution {
+    def climbStairs(n: Int): Int = {
+        var a=1
+        var b=2
+        var c = a+b
+        if(n==1) return 1
+        if(n==2) return 2
+        
+        var cur:Int = 3
+        
+        while(cur <= n){
+            c = a+b
+            a = b
+            b = c
+            cur += 1
+        }
+        return c
+    }
+}

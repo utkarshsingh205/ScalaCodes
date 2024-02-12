@@ -1,0 +1,19 @@
+object Solution {
+    def rob(nums: Array[Int]): Int = {
+        var n = nums.size
+        var maxs = 0;
+        
+        if(nums.size == 1)
+            return nums(0);
+        
+        var counter = n-3
+        
+        while(counter >= 0){
+            maxs = math.max(maxs,nums(counter+2));
+            nums(counter) += maxs; 
+            counter -=1
+        }
+        
+        return math.max(nums(0),nums(1));
+    }
+}

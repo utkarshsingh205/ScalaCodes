@@ -1,0 +1,12 @@
+object Solution {   
+
+  def maxDepth(root: TreeNode): Int = {
+    def findheight(node: TreeNode, height: Int = 0): Int = {
+      if (node == null)
+        return height 
+      else 
+        math.max(findheight(node.left,height+1), findheight(node.right,height+1))
+    }
+    findheight(root,0)
+  }
+}

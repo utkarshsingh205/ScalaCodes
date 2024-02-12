@@ -1,0 +1,26 @@
+import scala.collection.mutable.Map
+
+object Solution {
+    def isAnagram(s: String, t: String): Boolean = {
+        var mapcharacters = Map[Char, Int]()
+        s.foreach(ch=>{
+            if(mapcharacters.contains(ch))
+              mapcharacters(ch) += 1
+            else 
+              mapcharacters(ch) = 1
+        })
+ 
+        t.foreach(ch=>{
+            if(mapcharacters.contains(ch))
+            {
+                mapcharacters(ch) -= 1
+                if(mapcharacters(ch) == 0)
+                    mapcharacters -= ch
+            }
+            else
+                return false
+        })
+ 
+        return mapcharacters.isEmpty
+    }
+}

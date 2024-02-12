@@ -1,0 +1,15 @@
+import scala.collection.mutable.ArrayBuffer
+
+object Solution {
+    def coinChange(coins: Array[Int], amount: Int): Int = {
+     if(amount == 0) return 0   
+     val memo = ArrayBuffer.fill(amount + 1)(amount + 1)
+     memo(0) = 0
+     for (coin <- coins) {  
+       for (currentAmount <- coin to amount) {
+         memo(currentAmount) = memo(currentAmount).min(memo(currentAmount - coin) + 1)
+       }
+     }
+     if (memo(amount) <= amount) memo(amount) else -1
+  }
+}

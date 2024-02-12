@@ -1,0 +1,17 @@
+object Solution {
+    def removeDuplicates(nums: Array[Int]): Int = {
+        var i: Int = 0
+        var j: Int = 1
+        while(j!=nums.size){
+            while(j!=nums.size && nums(i)==nums(j)){
+                j += 1
+            }
+            if(j==nums.size)
+              return i+1
+            i+=1
+            nums(i) = nums(j)
+            j+=1
+        }
+        return i+1
+    }
+}

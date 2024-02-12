@@ -1,0 +1,25 @@
+object Solution {
+    def hasPathSum(root: TreeNode, targetSum: Int): Boolean = {
+        var ans:Boolean = false
+        def find(root: TreeNode, sum:Int) : Unit = {
+            if(root == null)
+               return
+            
+            if(root.left == null && root.right == null){
+            if(sum == targetSum) {
+                ans = true
+                return
+            }
+            }
+            if(root.left != null)
+              find(root.left , sum + root.left.value)
+            if(root.right != null)
+              find(root.right , sum + root.right.value)
+            return
+        }
+        if(root == null)
+           return false
+        find(root, root.value)
+        ans
+    }
+}

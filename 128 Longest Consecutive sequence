@@ -1,0 +1,23 @@
+object Solution {
+    def longestConsecutive(nums: Array[Int]): Int = {
+        val sortednum = nums.sortWith(_ < _).distinct
+        
+        var start = 0;
+        var end = 1;
+        val size = sortednum.length
+        var result = 1
+        if(size==0)return 0;
+        // sortednum.foreach(println)
+        
+        
+        for(end <- 1 until size){
+            if(sortednum(end) == sortednum(end-1)+1){
+               result = math.max(result,end-start+1)
+            }
+            else
+               start = end
+        }
+        result = math.max(result,end-start)
+        return result
+    }
+}

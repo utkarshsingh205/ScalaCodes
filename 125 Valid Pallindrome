@@ -1,0 +1,7 @@
+object Solution {
+    def isPalindrome(s: String): Boolean = {
+        val reg = "[^A-Za-z0-9]".r
+        var str = reg.replaceAllIn(s,"").toLowerCase
+        str == str.reverse
+    }
+}

@@ -1,0 +1,29 @@
+class NestedIterator(_nestedList: List[NestedInteger]) {
+    var idx = -1;
+    var data = Array[Int]();
+    for(element <- _nestedList) {
+        if(element.isInteger)
+            data :+= element.getInteger
+        else
+            data ++= help(element.getList)
+    }
+    
+    def help(data:Array[NestedInteger]):Array[Int] = {
+        var ret = Array[Int]();
+        for(element <- data) {
+            if(element.isInteger)
+                ret :+= element.getInteger;
+            else
+                ret ++= help(element.getList);
+        }
+        ret
+    }
+    def next(): Int = {
+        idx += 1;
+        data(idx);        
+    }
+    def hasNext(): Boolean = {
+        idx + 1 != data.size
+    }
+}
+ 

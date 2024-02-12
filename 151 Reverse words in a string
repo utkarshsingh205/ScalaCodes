@@ -1,0 +1,5 @@
+object Solution {
+    def reverseWords(s: String): String = {
+        s.split(" ").filter(r => r.size != 0).reverse.mkString(" ")
+    }
+}
